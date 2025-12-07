@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.13.0 (2025-12-07)
+- Addition of a new CAAHyperbolicObjectElements class.
+- Addition of a new CAAHyperbolicObjectDetails class.
+- Addition of a new CAAHyperbolic class.
+
 ## 2.12.1 (2024-12-18)
 - Self documentation (in [PR#19](https://github.com/jsauve/AASharp/pull/19))
 - Extension methods for easy date/time manipulation

@@ -996,6 +996,26 @@ namespace AASharpTest
             elements6.JDEquinox = elements6.T;
             AASNearParabolicObjectDetails details4 = AASNearParabolic.Calculate(elements6.T - 63.6954, ref elements6, bHighPrecision);
 
+            // Test out the AASHyperbolic class
+            Console.WriteLine();
+            Console.WriteLine("Information about the comet 3I/Atlas with a hyperbolic orbit:");
+            var tt_now = DateTime.UtcNow.ToTerrestrialDynamical();
+
+            // Orbital elements for 3I/ATLAS comet:
+            // https://minorplanetcenter.net/db_search/show_object?utf8=%E2%9C%93&object_id=3I
+            var _3I_ATLAS_elements = new AASHyperbolicObjectElements() {
+                q = 1.3564534,          // perihelion distance in AU
+                i = 175.11293,          // inclination in degrees
+                w = 128.00774,          // argument of perihelion in degrees
+                omega = 322.15483,      // longitude of ascending node in degrees
+                JDEquinox = tt_now,     // equinox of elements
+                T = AASDynamicalTime.UTC2TT(new AASDate(2025, 10, 29.48307, true).Julian),   // time of perihelion passage
+                e = 6.1394269			// eccentricity
+            };
+            var res = AASHyperbolic.Calculate(tt_now, ref _3I_ATLAS_elements, true);
+            Console.WriteLine($"True geocentric RA (hour angles): {res.TrueGeocentricRA}");
+            Console.WriteLine($"True geocentric DE (degrees):     {res.TrueGeocentricDeclination}");
+
             // test extensions
             Console.WriteLine();
 
